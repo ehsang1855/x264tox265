@@ -22,5 +22,5 @@ for line in dir_list:
 
         if ask_ok.ask_ok('codec is ' + str(codec_check)[2:-3] + ' Do you convert '+line+' ?(y/n)'):
 
-            command = "ffmpeg -i "+dir_add+"/"+line+" -f matroska -c:v libx265 -acodec libvorbis "+dir_add+"/"+line+"_x265.mkv"
-            os.system(command)
+            command = ["ffmpeg", "-i", dir_add+"/"+line, "-f", "matroska", "-c:v", "libx265", "-acodec", "libvorbis", dir_add+"/"+line[:-4]+"_x265.mkv"]
+            subprocess.call(command)
